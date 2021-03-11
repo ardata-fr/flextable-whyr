@@ -709,8 +709,13 @@ ft <- qflextable( head( airquality ))
 ft #<<
 ```
 
+Loops
 
-When in loop, use chunk option `results='asis'` and function `flextable_to_rmd`:
+> [...] `for`, `while`, and `repeat` loops always return an invisible NULL, 
+so nothing will be printed automatically [...]  
+https://yihui.org/en/2017/06/top-level-r-expressions/
+
+Use chunk option `results='asis'` and function `flextable_to_rmd`:
 
 ```{r eval=FALSE}
 for(i in seq_along(ft_list)){
