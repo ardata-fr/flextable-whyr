@@ -22,7 +22,6 @@ library(flextable)
 library(officer)
 library(knitr)
 library(data.table)
-library(mgcv)
 
 source("R/utilities.R")
 knitr_opt_set("talk")
@@ -339,8 +338,8 @@ The `i` selector corresponds to the rows and the `j` selector corresponds to the
 ft <- flextable(dat)
 ft %>% 
   color(
-    i = ~ Ozone < 40, 
-    j = c("Ozone", "Solar.R"), 
+    i = ~ Ozone < 40, #<<
+    j = c("Ozone", "Solar.R"), #<<
     color = "orange")
 ```
 
@@ -430,13 +429,11 @@ So far, this method exist for objects `lm`, `glm`, `mgcv::gam`, `xtable`, `htest
 
 
 ```{r message=FALSE}
-library(mgcv)
-set.seed(2)
-
-dat <- gamSim(1, n = 400, dist = "normal", scale = 2, verbose = FALSE)
-b <- gam(y ~ s(x0) + s(x1) + s(x2) + s(x3), data = dat)
-
-ft <- as_flextable(b)
+dat <- attitude
+dat$high.rating <- (dat$rating > 70)
+probit.model <- glm(high.rating ~ learning + critical +
+   advance, data=dat, family = binomial(link = "probit"))
+ft <- as_flextable(probit.model) #<<
 ft
 ```
 
