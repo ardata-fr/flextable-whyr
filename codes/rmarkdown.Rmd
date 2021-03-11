@@ -1,0 +1,36 @@
+---
+title: "Mario Kart"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+```{r include=FALSE}
+library(knitr)
+library(flextable)
+opts_chunk$set(echo = FALSE)
+```
+
+```{r ft.align="right"}
+ft <- qflextable( head( airquality ))
+ft
+```
+
+--------
+
+```{r}
+ft_list <- list()
+
+ft1 <- qflextable( head( airquality ))
+ft_list[[1]] <- ft1
+
+ft2 <- qflextable( tail( mtcars ))
+ft_list[[2]] <- ft2
+```
+
+```{r results='asis', echo = FALSE}
+for(i in seq_along(ft_list)){
+  flextable_to_rmd(ft_list[[i]])
+}
+```
+

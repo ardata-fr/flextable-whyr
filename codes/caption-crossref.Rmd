@@ -1,0 +1,40 @@
+---
+title: "flextable caption example"
+---
+
+```{r include=FALSE}
+library(knitr)
+library(flextable)
+opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+ft <- qflextable(head(airquality))
+```
+
+# Captions
+
+Now, let's add a caption with `set_caption`:
+
+```{r ft.align="left"}
+library(officer)
+set_caption(ft, 
+  caption = "airquality dataset", 
+  style = "Table Caption", 
+  autonum = run_autonum(seq_id = "tab", bkm = "tab1"))
+```
+
+Or use kintr chunk options:
+
+```{r ft.align="center", tab.cap='airquality dataset', tab.id='tab2', label='tab2'}
+ft
+```
+
+# Cross-references
+
+* This is a reference to flextable \@ref(tab:tab1).
+* This is a reference to flextable \@ref(tab:tab2).
+
+# Links
+
+* This is a link to [flextable](#tab:tab1)
