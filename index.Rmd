@@ -1,6 +1,6 @@
 ---
-title: "Flextable"
-subtitle: "R package for tabular reporting"
+title: "Why R? Webinar 037"
+subtitle: "Tabular reporting with the flextable package"
 author: "David Gohel"
 date: "`r Sys.Date()`"
 output:
@@ -1014,3 +1014,10 @@ class: center, middle, inverse
 Thank you
 
 ]
+
+Link to GitHub repository: https://github.com/ardata-fr/flextable-whyr
+
+Link to the presentation: https://youtu.be/-EuPFZCTnHE and https://ardata-fr.github.io/flextable-whyr
+
+
+
